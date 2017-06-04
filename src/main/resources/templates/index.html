@@ -6,6 +6,6 @@
     <title>Calorie Counter</title>
 </head>
 <body>
- <span>Hello calorie counter</span>
+ <p th:each="temp : ${table}" th:text="${temp.description}"></p>
 </body>
 </html>

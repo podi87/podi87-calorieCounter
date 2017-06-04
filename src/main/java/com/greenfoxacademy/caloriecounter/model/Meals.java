@@ -32,5 +32,6 @@ public class Meals {
     this.timestamp = new Timestamp(System.currentTimeMillis());
   }
 
-
+  public Meals() {
+  }
 }

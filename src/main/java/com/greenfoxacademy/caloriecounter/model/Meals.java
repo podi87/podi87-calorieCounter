@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "Meals")
+@Table(name = "MEALS")
 @Getter
 @Setter
 public class Meals {
@@ -20,7 +20,7 @@ public class Meals {
   private String type;
   @Column(name = "Description")
   private String description;
-  @Column(name = "Calories(kcal)")
+  @Column(name = "Calories")
   private int calories;
   @Column(name = "Date")
   private Timestamp timestamp;
@@ -32,5 +32,5 @@ public class Meals {
     this.timestamp = new Timestamp(System.currentTimeMillis());
   }
 
-  
+
 }

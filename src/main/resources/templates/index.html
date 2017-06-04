@@ -6,6 +6,28 @@
     <title>Calorie Counter</title>
 </head>
 <body>
- <p th:each="temp : ${table}" th:text="${temp.description}"></p>
+  <header>
+    <h1>Calorie Counter</h1>
+      <span class="counter" th:text="|Number of meals: | + ${count}"></span>
+  </header>
+  <a th:href="@{/add}">Add new meals</a>
+  <div>
+      <table class="table">
+          <tr class="firstRow">
+              <th>ID</th>
+              <th>TYPE</th>
+              <th>DESCRIPTION</th>
+              <th>CALORIES(kcal)</th>
+              <th>DATE</th>
+          </tr>
+          <tr class="list" th:each="temp : ${table}">
+              <td th:text="${temp.id}"></td>
+              <td th:text="${temp.type}"></td>
+              <td th:text="${temp.description}"></td>
+              <td th:text="${temp.calories}"></td>
+              <td th:text="${temp.timestamp}"></td>
+          </tr>
+      </table>
+  </div>
 </body>
 </html>

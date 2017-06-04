@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <title>Calorie Counter</title>
+</head>
+<body>
+    <header class="addNew">
+        <h1>Calorie Counter</h1>
+        <span class="counter" th:text="|Number of meals: | + ${count}"></span>
+    </header>
+    <div class="input">
+        <form method="post" th:action="@{/addMeal}">
+            <select th:name="type">
+                <option>Choose type</option>
+                <option th:each="temp : ${types}" th:text="${temp.type}"></option>
+            </select>
+            <input th:type="text" th:name="description"/>
+            <input th:type="text" th:name="calories"/>
+            <input th:type="submit" value="Add"/>
+        </form>
+    </div>
+</body>
+</html>

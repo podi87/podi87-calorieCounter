@@ -16,13 +16,9 @@ public class Meals {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
 
-  @Column(name = "Type")
   private String type;
-  @Column(name = "Description")
   private String description;
-  @Column(name = "Calories")
   private int calories;
-  @Column(name = "Date")
   private Timestamp timestamp;
 
   public Meals(String type, String description, int calories) {

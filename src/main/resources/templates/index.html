@@ -8,11 +8,16 @@
 <body>
   <header>
     <h1>Calorie Counter</h1>
-      <span class="counter" th:text="|Number of meals: | + ${count}"></span>
+      <h2 class="counter" th:text="|Number of meals: | + ${count}"></h2>
+      <h2 class="counter" th:text="|Total calories: | + ${total}"></h2>
   </header>
-  <a th:href="@{/add}">Add new meals</a>
-  <div>
-      <table class="table">
+  <div class="main">
+      <div class="input">
+      <form th:action="@{/add}">
+          <button type="submit" value="Add new meals">Add new meals</button>
+      </form>
+      </div>
+      <table class="table1">
           <tr class="firstRow">
               <th>ID</th>
               <th>TYPE</th>
@@ -26,6 +31,16 @@
               <td th:text="${temp.description}"></td>
               <td th:text="${temp.calories}"></td>
               <td th:text="${temp.timestamp}"></td>
+              <td>
+                  <form th:action="@{/delete?delID=} + ${temp.id}" th:object="${table}" method="post">
+                      <input type="submit" th:name="delID" value="Delete"/>
+                  </form>
+              </td>
+              <td>
+              <form th:action="@{/update?upID=} + ${temp.id}" th:object="${table}" method="post">
+                  <input type="submit" th:name="upID" value="Edit"/>
+              </form>
+              </td>
           </tr>
       </table>
   </div>

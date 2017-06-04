@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,8 +23,18 @@ public class MainController {
   @Autowired
   MealTypeRepository mealTypeRepository;
 
+
   @RequestMapping(value = "/")
   public String showMeals(Model model) {
+    if (mealRepository.count() > 0) {
+      Integer sum = 0;
+      for (Meals m : mealRepository.findAll()) {
+        sum += m.getCalories();
+      }
+      model.addAttribute("total", sum);
+    } else {
+      model.addAttribute("total", 0);
+    }
     model.addAttribute("count", mealRepository.count());
     model.addAttribute("table", mealRepository.findAll());
     return "index";
@@ -38,6 +49,7 @@ public class MainController {
       }
     }
     model.addAttribute("count", mealRepository.count());
+    model.addAttribute("table", mealRepository.findAll());
     model.addAttribute("types", mealTypeRepository.findAll());
     return "add";
   }
@@ -48,6 +60,37 @@ public class MainController {
     int cal = Integer.parseInt(calories);
     mealRepository.save(new Meals(type, description, cal));
     return "redirect:/add";
+  }
+
+  @RequestMapping(value = "/delete")
+  public String edit(@RequestParam(name = "delID") long id) {
+    mealRepository.delete(id);
+    return "redirect:/";
+  }
+
+  @RequestMapping(value = "/update")
+  public String update(Model model, @RequestParam(name = "upID") long id) {
+    model.addAttribute("count", mealRepository.count());
+    model.addAttribute("table", mealRepository.findAll());
+    model.addAttribute("types", mealTypeRepository.findAll());
+    return "edit";
+  }
+
+  @RequestMapping(value = "/editor")
+  public String editor(@RequestParam(name = "upID") long id, @RequestParam(name = "type") String type,
+                       @RequestParam(name = "description") String description, @RequestParam(name = "calories") String calories) {
+    int cal = Integer.parseInt(calories);
+    mealRepository.findOne(id).setCalories(cal);
+    mealRepository.findOne(id).setDescription(description);
+    mealRepository.findOne(id).setType(type);
+    mealRepository.findOne(id).setTimestamp(new Timestamp(System.currentTimeMillis()));
+    mealRepository.save(mealRepository.findOne(id));
+    return "redirect:/";
+  }
+
+  @RequestMapping(value = "/back")
+  public String back() {
+    return "redirect:/";
   }
 
 }

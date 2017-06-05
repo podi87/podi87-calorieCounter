@@ -26,14 +26,6 @@ public class RestController {
   @Autowired
   ResponseMessage responseMessage;
 
-  private String message;
-
-//  @ExceptionHandler(HttpMessageNotReadableException.class)
-//  public String exceptionHandler(HttpMessageNotReadableException e) {
-//    String m = e.getMessage();
-//    System.out.println(m);
-//    return this.message = new ResponseMessage(m).getStatus();
-//  }
 
   @RequestMapping(value = "/getmeals", method = RequestMethod.GET)
   public Iterable<Meals> list() {

@@ -31,12 +31,12 @@
               <td th:text="${temp.description}"></td>
               <td th:text="${temp.calories}"></td>
               <td th:text="${temp.timestamp}"></td>
-              <td>
+              <td class="button">
                   <form th:action="@{/delete?delID=} + ${temp.id}" th:object="${table}" method="post">
                       <input type="submit" th:name="delID" value="Delete"/>
                   </form>
               </td>
-              <td>
+              <td class="button">
               <form th:action="@{/update?upID=} + ${temp.id}" th:object="${table}" method="post">
                   <input type="submit" th:name="upID" value="Edit"/>
               </form>

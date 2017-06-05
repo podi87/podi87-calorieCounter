@@ -2,6 +2,7 @@ package com.greenfoxacademy.caloriecounter.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -10,6 +11,7 @@ import java.sql.Timestamp;
 @Table(name = "MEALS")
 @Getter
 @Setter
+@Component
 public class Meals {
 
   @Id
@@ -29,5 +31,16 @@ public class Meals {
   }
 
   public Meals() {
+  }
+
+  @Override
+  public String toString() {
+    return "Meals{" +
+            "id=" + id +
+            ", type='" + type + '\'' +
+            ", description='" + description + '\'' +
+            ", calories=" + calories +
+            ", timestamp=" + timestamp +
+            '}';
   }
 }

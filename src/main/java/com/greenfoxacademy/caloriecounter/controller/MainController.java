@@ -23,6 +23,7 @@ public class MainController {
   @Autowired
   MealTypeRepository mealTypeRepository;
 
+  public String message = "Add new meals below!";
 
   @RequestMapping(value = "/")
   public String showMeals(Model model) {
@@ -48,6 +49,7 @@ public class MainController {
         mealTypeRepository.save(new MealTypes(mealTypes.get(i)));
       }
     }
+    model.addAttribute("log", message);
     model.addAttribute("count", mealRepository.count());
     model.addAttribute("table", mealRepository.findAll());
     model.addAttribute("types", mealTypeRepository.findAll());
@@ -57,8 +59,17 @@ public class MainController {
   @RequestMapping(value = "/addMeal")
   public String addNew(@RequestParam(name = "type") String type, @RequestParam(name = "description") String description,
                        @RequestParam(name = "calories") String calories) {
-    int cal = Integer.parseInt(calories);
-    mealRepository.save(new Meals(type, description, cal));
+    if (type.equals("Choose type") && calories.isEmpty()) {
+      message = "Please choose type and add calories!";
+    } else if (type.equals("Choose type")) {
+      message = "Please choose type!";
+    } else if (calories.isEmpty()) {
+      message = "Please add calories!";
+    } else {
+      int cal = Integer.parseInt(calories);
+      message = "Add new meals below!";
+      mealRepository.save(new Meals(type, description, cal));
+    }
     return "redirect:/add";
   }
 

@@ -10,10 +10,11 @@
         <h1>Calorie Counter - Add meals</h1>
         <h2 class="counter" th:text="|Number of meals: | + ${count}"></h2>
         <form th:action="@{/back}">
-            <button type="submit" value="Back">Back</button>
+            <button class="back" type="submit" value="Back">Back</button>
         </form>
     </header>
     <div class="main">
+        <h4 th:text="${log}"></h4>
         <div class="input">
         <form method="post" th:action="@{/addMeal}">
             <select th:name="type">
@@ -39,7 +40,7 @@
                 <td th:text="${temp.description}"></td>
                 <td th:text="${temp.calories}"></td>
                 <td th:text="${temp.timestamp}"></td>
-                <td>
+                <td class="button">
                     <form th:action="@{/update?upID=} + ${temp.id}" th:object="${table}" method="post">
                         <input type="submit" th:name="upID" value="Edit"/>
                     </form>
@@ -47,5 +48,6 @@
             </tr>
         </table>
     </div>
+
 </body>
 </html>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -94,7 +95,7 @@ public class MainController {
     mealRepository.findOne(id).setCalories(cal);
     mealRepository.findOne(id).setDescription(description);
     mealRepository.findOne(id).setType(type);
-    mealRepository.findOne(id).setTimestamp(new Timestamp(System.currentTimeMillis()));
+    mealRepository.findOne(id).setDate(LocalDate.now().toString());
     mealRepository.save(mealRepository.findOne(id));
     return "redirect:/";
   }

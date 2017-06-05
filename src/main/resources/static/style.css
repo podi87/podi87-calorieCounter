@@ -1,32 +1,46 @@
 body {
-    background-image: url("bakery.png");
+    background: url("bakery.png");
+    background-size: 100%;
 }
 
 header {
-    background-image: url("vegetables.png");
-    margin: 0px;
+    background: url("vegetables.png");
+    background-size: cover;
+    width: 100%;
+    margin: 0;
     height: 250px;
     border: 2px solid black;
 }
 
 .addNew {
-    background-image: url("vegetables2.jpg");
+    width: 100%;
+    background: url("vegetables2.jpg");
+    background-size: cover;
 }
 
 h1 {
+    border-radius: 3px;
    margin-top: 20px;
    margin-left: 20px;
    width: 400px;
    background: rgba(255,255,255,0.5);
 }
 
+h4 {
+    margin-left: 50px;
+    /*margin-top: 20px;*/
+}
+
 .counter {
     background: rgba(255,255,255,0.5);
+    border-radius: 3px;
     margin-left: 20px;
     width: 250px;
 }
 
 .table1 {
+    background: rgba(255,255,255,0.6);
+    border-radius: 3px;
     width: 800px;
 }
 
@@ -37,7 +51,7 @@ h1 {
 .input {
     padding-top: 20px;
     width: 800px;
-    margin: 50px;
+    margin: 20px;
 }
 
 td {
@@ -46,6 +60,7 @@ td {
 }
 
 .main {
+    padding: 20px;
     border-radius: 10px;
     margin-left: 500px;
     margin-top: 50px;
@@ -73,7 +88,7 @@ td {
 }
 
 .date {
-    margin-left: 20px;
+    margin-left: 80px;
     width: 200px;
 }
 

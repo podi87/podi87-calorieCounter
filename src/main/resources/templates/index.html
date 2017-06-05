@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <link href="style.css" rel="stylesheet" type="text/css" />
     <title>Calorie Counter</title>
 </head>
 <body>
@@ -30,7 +30,7 @@
               <td th:text="${temp.type}"></td>
               <td th:text="${temp.description}"></td>
               <td th:text="${temp.calories}"></td>
-              <td th:text="${temp.timestamp}"></td>
+              <td th:text="${temp.date}"></td>
               <td class="button">
                   <form th:action="@{/delete?delID=} + ${temp.id}" th:object="${table}" method="post">
                       <input type="submit" th:name="delID" value="Delete"/>

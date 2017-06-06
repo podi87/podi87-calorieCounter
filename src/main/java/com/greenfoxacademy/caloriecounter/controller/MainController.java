@@ -60,6 +60,7 @@ public class MainController {
   @RequestMapping(value = "/addMeal")
   public String addNew(@RequestParam(name = "type") String type, @RequestParam(name = "description") String description,
                        @RequestParam(name = "calories") String calories) {
+    int cal = 0;
     if (type.equals("Choose type") && calories.isEmpty()) {
       message = "Please choose type and add calories!";
     } else if (type.equals("Choose type")) {
@@ -67,10 +68,17 @@ public class MainController {
     } else if (calories.isEmpty()) {
       message = "Please add calories!";
     } else {
-      int cal = Integer.parseInt(calories);
+      try {
+        cal = Integer.parseInt(calories);
+      } catch (NumberFormatException e) {
+        e.getStackTrace();
+      }
+      if (cal != 0) {
       message = "Add new meals below!";
       mealRepository.save(new Meals(type, description, cal));
-    }
+    } else {
+        message = "Please provide number format in the calorie field!";
+      }
     return "redirect:/add";
   }
 

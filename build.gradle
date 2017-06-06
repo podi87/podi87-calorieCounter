@@ -23,6 +23,7 @@ repositories {
 
 
 dependencies {
+	compile group: 'net.sf.jopt-simple', name: 'jopt-simple', version: '3.0-rc2'
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')

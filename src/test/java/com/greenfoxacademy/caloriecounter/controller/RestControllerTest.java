@@ -6,6 +6,8 @@ import com.greenfoxacademy.caloriecounter.model.Meals;
 
 import com.greenfoxacademy.caloriecounter.repository.MealRepo;
 import com.greenfoxacademy.caloriecounter.repository.MealRepository;
+import joptsimple.OptionParser;
+import joptsimple.OptionSet;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +24,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.nio.charset.Charset;
 
+import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -69,6 +72,10 @@ public class RestControllerTest {
 
   @Test
   public void status() throws Exception {
+    String b = "abc";
+    OptionParser parser = new OptionParser("aBys");
+    OptionSet optionSet = parser.parse("-a", "-y");
+    assertTrue(optionSet.has("a"));
 
   }
 

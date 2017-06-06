@@ -74,11 +74,12 @@ public class MainController {
         e.getStackTrace();
       }
       if (cal != 0) {
-      message = "Add new meals below!";
-      mealRepository.save(new Meals(type, description, cal));
-    } else {
+        message = "Add new meals below!";
+        mealRepository.save(new Meals(type, description, cal));
+      } else {
         message = "Please provide number format in the calorie field!";
       }
+    }
     return "redirect:/add";
   }
 
